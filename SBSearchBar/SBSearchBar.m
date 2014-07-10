@@ -32,10 +32,12 @@
     [self addSubview:self.searchTextField];
     [self.searchTextField setTextColor:textColor];
     
+    float buttonMove = !self.cancelButton?0: (CGRectGetWidth(self.cancelButton.frame) + 9);
+    
     CGRect frame = self.searchTextField.frame;
     frame.origin = CGPointZero;
     frame.origin.x = CGRectGetWidth(self.lensImageView.frame) + 6;
-    frame.size.width = CGRectGetWidth(self.frame) - CGRectGetWidth(self.lensImageView.frame) + 6;
+    frame.size.width = CGRectGetWidth(self.frame) - CGRectGetWidth(self.lensImageView.frame) + 6 - buttonMove;
     self.searchTextField.frame = frame;
     
     
@@ -46,7 +48,13 @@
     frame.origin.y = CGRectGetHeight(self.frame)/2 - CGRectGetHeight(frame)/2;
     self.lensImageView.frame = frame;
     
-
+    [self addSubview:self.cancelButton];
+    
+    frame = self.cancelButton.frame;
+    frame.origin.x = CGRectGetWidth(self.frame) - CGRectGetWidth(frame) - 4;
+    frame.origin.y = CGRectGetHeight(self.frame)/2 - CGRectGetHeight(frame)/2;
+    self.cancelButton.frame = frame;
+    
     
 }
 
@@ -55,6 +63,20 @@
     [self.lensImageView removeFromSuperview];
     self.lensImageView = [[UIImageView alloc] initWithImage:_lensImage];
     [self addSubview:self.lensImageView];
+}
+
+-(void) setCancelButtonImage:(UIImage *)cancelButtonImage{
+    _cancelButtonImage = cancelButtonImage;
+    if (!self.cancelButton) {
+        self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    }
+    [self.cancelButton removeFromSuperview];
+    [self.cancelButton setBackgroundImage:_cancelButtonImage forState:UIControlStateNormal];
+    CGRect frame = self.cancelButton.frame;
+    frame.size = _cancelButtonImage.size;
+    self.cancelButton.frame = frame;
+    [self.cancelButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.cancelButton];
 }
 
 
@@ -125,5 +147,15 @@
     _placeHolderColor = color;
     self.searchTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.searchTextField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
 }
+
+- (void) cancelAction:(id) sender{
+    self.searchTextField.text = @"";
+    [self resignFirstResponder];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(SBSearchBarCancelButtonClicked:)]) {
+        [self.delegate SBSearchBarCancelButtonClicked:self];
+    }
+}
+
 
 @end

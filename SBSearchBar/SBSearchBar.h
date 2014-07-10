@@ -14,6 +14,7 @@
 
 @optional
 - (void)SBSearchBarSearchButtonClicked:(SBSearchBar *)searchBar;                     // called when keyboard search button pressed
+- (void)SBSearchBarCancelButtonClicked:(SBSearchBar *)searchBar;                     // called when cancel button is pressed
 
 @end
 
@@ -21,6 +22,8 @@
 
 @property (nonatomic, strong) UIImageView *lensImageView;
 @property (nonatomic, strong) UIImage *lensImage;
+@property (nonatomic, strong) UIButton *cancelButton;
+@property (nonatomic, strong) UIImage *cancelButtonImage;
 @property (nonatomic, strong) UITextField *searchTextField;
 @property (nonatomic, assign) id <SBSearchBarDelegate> delegate;
 @property (nonatomic, readonly) NSString *text;
