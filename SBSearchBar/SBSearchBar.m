@@ -16,13 +16,18 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.searchTextField = [[UITextField alloc] initWithFrame:self.frame];
+        self.searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
         self.searchTextField.placeholder = NSLocalizedString(@"Search", nil);
         self.lensImageView = [[UIImageView alloc] init];
     }
     return self;
 }
 
+-(void) setFrame:(CGRect)frame{
+    [super setFrame:frame];
+    self.searchTextField.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
+    [self willMoveToSuperview:nil];
+}
 
 - (void) willMoveToSuperview:(UIView *)newSuperview{
     
@@ -88,8 +93,17 @@
         self.lensImageView.frame = frame;
     }];
 
+    if (self.delegate && [self.delegate respondsToSelector:@selector(SBSearchBarShouldBeginEditing:)]) {
+        [self.delegate SBSearchBarShouldBeginEditing:self];
+    }
     
     return YES;
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(SBSearchBarTextDidBeginEditing:)]) {
+        [self.delegate SBSearchBarTextDidBeginEditing:self];
+    }
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
@@ -104,6 +118,10 @@
 
     }
     
+    if (self.delegate && [self.delegate respondsToSelector:@selector(SBSearchBarShouldEndEditing:)]) {
+        [self.delegate SBSearchBarShouldEndEditing:self];
+    }
+    
     return YES;
 }
 
@@ -116,6 +134,12 @@
     }
     
     return YES;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(SBSearchBarTextDidEndEditing:)]) {
+        [self.delegate SBSearchBarTextDidEndEditing:self];
+    }
 }
 
 
