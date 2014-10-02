@@ -28,7 +28,13 @@ pod 'SBSearchBar',
 ```
 - add delegate methods
 ```objective-c
-- (void)SBSearchBarSearchButtonClicked:(SBSearchBar *)searchBar; // called when keyboard search button pressed
+- (void)SBSearchBarSearchButtonClicked:(SBSearchBar *)searchBar;                     // called when keyboard search button pressed
+- (void)SBSearchBarCancelButtonClicked:(SBSearchBar *)searchBar;                     // called when cancel button is pressed
+
+- (BOOL)SBSearchBarShouldBeginEditing:(SBSearchBar *)searchBar;                      // return NO to not become first responder
+- (void)SBSearchBarTextDidBeginEditing:(SBSearchBar *)searchBar;                     // called when text starts editing
+- (BOOL)SBSearchBarShouldEndEditing:(SBSearchBar *)searchBar;                        // return NO to not resign first responder
+- (void)SBSearchBarTextDidEndEditing:(SBSearchBar *)searchBar;                       // called when text ends editing
 
 ```
 - in your code add follow code when you need show the SearchBar
