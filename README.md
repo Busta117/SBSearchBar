@@ -10,7 +10,7 @@ Easy custom searchBar
 #### Podfile
 
 ```ruby
-pod 'SBSearchBar',
+pod 'SBSearchBar'
 ```
 
 ### Installation without CocoaPods
