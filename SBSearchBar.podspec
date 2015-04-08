@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
 	:tag => s.version.to_s 
 	}
   s.ios.deployment_target = '6.0'
-  s.source_files = 'SBSearchBar/*'
+  c.source_files = 'SBSearchBar/Source/*'
+  c.resources = 'SBSearchBar/Resources/*'
   s.requires_arc = true
 end

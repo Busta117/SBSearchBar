@@ -14,12 +14,12 @@
 		1ADE35801910441C006B4B40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE357F1910441C006B4B40 /* main.m */; };
 		1ADE35841910441C006B4B40 /* SBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE35831910441C006B4B40 /* SBAppDelegate.m */; };
 		1ADE35861910441C006B4B40 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ADE35851910441C006B4B40 /* Images.xcassets */; };
-		1ADE35A519104AA8006B4B40 /* SBSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADE35A419104AA8006B4B40 /* SBSearchBar.m */; };
 		1ADE35AF19105B45006B4B40 /* ic_lens@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADE35AE19105B45006B4B40 /* ic_lens@2x.png */; };
 		1AF1EDCF19113664004D3C28 /* SBExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1EDCD19113664004D3C28 /* SBExampleViewController.m */; };
 		1AF1EDD019113664004D3C28 /* SBExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1EDCE19113664004D3C28 /* SBExampleViewController.xib */; };
+		52312B2D1AD5D0A9008B93C4 /* SBSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52312B291AD5D0A9008B93C4 /* SBSearchBar.xib */; };
+		52312B2E1AD5D0A9008B93C4 /* SBSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 52312B2C1AD5D0A9008B93C4 /* SBSearchBar.m */; };
 		5280C0951AD56B3500BE8EED /* FormReset@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5280C0941AD56B3500BE8EED /* FormReset@2x.png */; };
-		5280C0971AD5B31C00BE8EED /* SBSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5280C0961AD5B31C00BE8EED /* SBSearchBar.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,14 +35,14 @@
 		1ADE35831910441C006B4B40 /* SBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBAppDelegate.m; sourceTree = "<group>"; };
 		1ADE35851910441C006B4B40 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1ADE358C1910441C006B4B40 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		1ADE35A319104AA8006B4B40 /* SBSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBSearchBar.h; sourceTree = "<group>"; };
-		1ADE35A419104AA8006B4B40 /* SBSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBSearchBar.m; sourceTree = "<group>"; };
 		1ADE35AE19105B45006B4B40 /* ic_lens@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_lens@2x.png"; sourceTree = "<group>"; };
 		1AF1EDCC19113664004D3C28 /* SBExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBExampleViewController.h; sourceTree = "<group>"; };
 		1AF1EDCD19113664004D3C28 /* SBExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBExampleViewController.m; sourceTree = "<group>"; };
 		1AF1EDCE19113664004D3C28 /* SBExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBExampleViewController.xib; sourceTree = "<group>"; };
+		52312B291AD5D0A9008B93C4 /* SBSearchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBSearchBar.xib; sourceTree = "<group>"; };
+		52312B2B1AD5D0A9008B93C4 /* SBSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBSearchBar.h; sourceTree = "<group>"; };
+		52312B2C1AD5D0A9008B93C4 /* SBSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBSearchBar.m; sourceTree = "<group>"; };
 		5280C0941AD56B3500BE8EED /* FormReset@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FormReset@2x.png"; path = "../../Rokk3r Labs/HotSwitch_Assets/Content/FormReset@2x.png"; sourceTree = "<group>"; };
-		5280C0961AD5B31C00BE8EED /* SBSearchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBSearchBar.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 		1ADE35671910441C006B4B40 = {
 			isa = PBXGroup;
 			children = (
-				1ADE35A219104A97006B4B40 /* SBSearchBar */,
+				52312B271AD5D0A9008B93C4 /* SBSearchBar */,
 				1ADE35791910441C006B4B40 /* SBSearchBarExample */,
 				1ADE35721910441C006B4B40 /* Frameworks */,
 				1ADE35711910441C006B4B40 /* Products */,
@@ -115,14 +115,30 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		1ADE35A219104A97006B4B40 /* SBSearchBar */ = {
+		52312B271AD5D0A9008B93C4 /* SBSearchBar */ = {
 			isa = PBXGroup;
 			children = (
-				1ADE35A319104AA8006B4B40 /* SBSearchBar.h */,
-				1ADE35A419104AA8006B4B40 /* SBSearchBar.m */,
-				5280C0961AD5B31C00BE8EED /* SBSearchBar.xib */,
+				52312B281AD5D0A9008B93C4 /* Resources */,
+				52312B2A1AD5D0A9008B93C4 /* Source */,
 			);
 			path = SBSearchBar;
+			sourceTree = "<group>";
+		};
+		52312B281AD5D0A9008B93C4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				52312B291AD5D0A9008B93C4 /* SBSearchBar.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		52312B2A1AD5D0A9008B93C4 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				52312B2B1AD5D0A9008B93C4 /* SBSearchBar.h */,
+				52312B2C1AD5D0A9008B93C4 /* SBSearchBar.m */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,7 +195,7 @@
 			files = (
 				1AF1EDD019113664004D3C28 /* SBExampleViewController.xib in Resources */,
 				5280C0951AD56B3500BE8EED /* FormReset@2x.png in Resources */,
-				5280C0971AD5B31C00BE8EED /* SBSearchBar.xib in Resources */,
+				52312B2D1AD5D0A9008B93C4 /* SBSearchBar.xib in Resources */,
 				1ADE35AF19105B45006B4B40 /* ic_lens@2x.png in Resources */,
 				1ADE357E1910441C006B4B40 /* InfoPlist.strings in Resources */,
 				1ADE35861910441C006B4B40 /* Images.xcassets in Resources */,
@@ -193,9 +209,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52312B2E1AD5D0A9008B93C4 /* SBSearchBar.m in Sources */,
 				1AF1EDCF19113664004D3C28 /* SBExampleViewController.m in Sources */,
 				1ADE35801910441C006B4B40 /* main.m in Sources */,
-				1ADE35A519104AA8006B4B40 /* SBSearchBar.m in Sources */,
 				1ADE35841910441C006B4B40 /* SBAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
