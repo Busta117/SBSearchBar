@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'SBSearchBar'
-  s.version  = '0.0.4'
+  s.version  = '0.0.5'
   s.license = { :type => 'MIT', :file => 'LICENSE'}
   s.summary  = 'custom UISearchBar'
   s.homepage = 'https://github.com/Busta117/SBSearchBar'
