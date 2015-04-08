@@ -46,10 +46,12 @@
     if (!self.cancelButtonImage) {
         self.textfieldRightConstraint.constant = - self.cancelButton.frame.size.width;
     }
-    
 
     if (self.addExtraCancelButton) {
-        [self.extraCancelButton setTitle:NSLocalizedString(@"Cancel", nil) forState:UIControlStateNormal];
+        if ([self.extraCancelButton.titleLabel.text isEqualToString:@"Button"]) {
+            [self.extraCancelButton setTitle:NSLocalizedString(@"Cancel", nil) forState:UIControlStateNormal];
+        }
+
         [self.extraCancelButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     
