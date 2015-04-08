@@ -25,15 +25,19 @@
 
 @interface SBSearchBar : UIView <UITextFieldDelegate>
 
-@property (nonatomic, strong) UIImageView *lensImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *lensImageView;
 @property (nonatomic, strong) UIImage *lensImage;
-@property (nonatomic, strong) UIButton *cancelButton;
+@property (nonatomic, weak) IBOutlet UIButton *cancelButton;
 @property (nonatomic, strong) UIImage *cancelButtonImage;
-@property (nonatomic, strong) UITextField *searchTextField;
+@property (nonatomic, weak) IBOutlet UITextField *searchTextField;
 @property (nonatomic, assign) id <SBSearchBarDelegate> delegate;
 @property (nonatomic, readonly) NSString *text;
 @property (nonatomic, assign) UIFont *font;
 @property (nonatomic, assign) UIColor *placeHolderColor;
+
+@property (nonatomic, weak) IBOutlet UIView *searchFieldsContainerView;
+@property (nonatomic, assign) BOOL addExtraCancelButton;
+@property (nonatomic, weak) IBOutlet UIButton *extraCancelButton;
 
 -(void) setTextColor:(UIColor *)color;
 

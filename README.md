@@ -49,6 +49,11 @@ searchBarCustom.font = [UIFont fontWithName:@"Arial" size:14];
 
 //you can set a custom lens image
 searchBarCustom.lensImage = [UIImage imageNamed:@"ic_lens"]; 
+//you can set a custom X image
+searchBarCustom.cancelButtonImage = [UIImage imageNamed:@"FormReset"];
+
+//you cand show an additional cancel button
+searchBarCustom.addExtraCancelButton = YES;
 
 [self.view addSubview:searchBarCustom];
 

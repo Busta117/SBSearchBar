@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'SBSearchBar'
-  s.version  = '0.0.3'
+  s.version  = '0.0.4'
   s.license = { :type => 'MIT', :file => 'LICENSE'}
   s.summary  = 'custom UISearchBar'
   s.homepage = 'https://github.com/Busta117/SBSearchBar'
@@ -10,6 +10,6 @@ Pod::Spec.new do |s|
 	:tag => s.version.to_s 
 	}
   s.ios.deployment_target = '6.0'
-  s.source_files = 'SBSearchBar/*.{h,m}'
+  s.source_files = 'SBSearchBar/*'
   s.requires_arc = true
 end

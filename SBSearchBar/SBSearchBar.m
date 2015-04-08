@@ -8,90 +8,156 @@
 
 #import "SBSearchBar.h"
 
+@interface SBSearchBar()
+@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *containerRightConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *extraCancelWConstraint;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *textfieldRightConstraint;
+
+@property (nonatomic, assign) CGRect orginalFrame;
+@property (nonatomic, strong) NSString *placeHolderStr;
+@end
+
 @implementation SBSearchBar
 {
-    UIColor *textColor;
-}
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
-        self.searchTextField.placeholder = NSLocalizedString(@"Search", nil);
-        self.lensImageView = [[UIImageView alloc] init];
-    }
-    return self;
+
 }
 
--(void) setFrame:(CGRect)frame{
-    [super setFrame:frame];
-    self.searchTextField.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
-    [self willMoveToSuperview:nil];
+- (id)initWithFrame:(CGRect)frame
+{
+    
+    UINib *nib = [UINib nibWithNibName:@"SBSearchBar" bundle:nil];
+    SBSearchBar *view = [nib instantiateWithOwner:self options:nil].firstObject;
+    view.frame = frame;
+    
+    view.placeHolderStr = NSLocalizedString(@"Search", nil);
+    view.orginalFrame = frame;
+    return view;
 }
+
 
 - (void) willMoveToSuperview:(UIView *)newSuperview{
     
     self.searchTextField.delegate = self;
     self.searchTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     [self.searchTextField setReturnKeyType:UIReturnKeySearch];
-    [self addSubview:self.searchTextField];
-    [self.searchTextField setTextColor:textColor];
+    [self.searchTextField setTextColor:self.textColor];
     
-    float buttonMove = !self.cancelButton?0: (CGRectGetWidth(self.cancelButton.frame) + 9);
+    if (!self.cancelButtonImage) {
+        self.textfieldRightConstraint.constant = - self.cancelButton.frame.size.width;
+    }
     
-    CGRect frame = self.searchTextField.frame;
-    frame.origin = CGPointZero;
-    frame.origin.x = CGRectGetWidth(self.lensImageView.frame) + 6;
-    frame.size.width = CGRectGetWidth(self.frame) - CGRectGetWidth(self.lensImageView.frame) + 6 - buttonMove;
-    self.searchTextField.frame = frame;
+
+    if (self.addExtraCancelButton) {
+        [self.extraCancelButton setTitle:NSLocalizedString(@"Cancel", nil) forState:UIControlStateNormal];
+        [self.extraCancelButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    self.extraCancelButton.hidden = YES;
+    
+
+
+}
+
+-(void)didMoveToSuperview{
+
+    
+    if (self.placeHolderColor) {
+        self.searchTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeHolderStr attributes:@{NSForegroundColorAttributeName: self.placeHolderColor}];
+    }else{
+        self.searchTextField.placeholder = self.placeHolderStr;
+    }
+    
+    [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    NSDictionary *views = @{@"view":self};
+    
+    NSDictionary *metrics = @{@"viewX":[NSNumber numberWithDouble:CGRectGetMinX(self.orginalFrame)],
+                              @"viewY":[NSNumber numberWithDouble:CGRectGetMinY(self.orginalFrame)],
+                              @"viewH":[NSNumber numberWithDouble:CGRectGetHeight(self.orginalFrame)]
+                              };
+    
+    [self.superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-viewX-[view]-viewX-|" options:NSLayoutFormatAlignAllBaseline metrics:metrics views:views]];
     
     
-    [self addSubview:self.lensImageView];
+    [self.superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-viewY-[view(viewH)]" options:NSLayoutFormatAlignAllBaseline metrics:metrics views:views]];
     
-    frame = self.lensImageView.frame;
-    frame.origin.x = 3;//CGRectGetWidth(self.frame)/2 - CGRectGetWidth(frame)/2;
-    frame.origin.y = CGRectGetHeight(self.frame)/2 - CGRectGetHeight(frame)/2;
-    self.lensImageView.frame = frame;
     
-    [self addSubview:self.cancelButton];
+    self.extraCancelWConstraint.constant = 0;
+    self.containerRightConstraint.constant = -10;
     
-    frame = self.cancelButton.frame;
-    frame.origin.x = CGRectGetWidth(self.frame) - CGRectGetWidth(frame) - 4;
-    frame.origin.y = CGRectGetHeight(self.frame)/2 - CGRectGetHeight(frame)/2;
-    self.cancelButton.frame = frame;
+    [self.superview layoutIfNeeded];
+    
     
     
 }
 
 - (void) setLensImage:(UIImage *)lensImage{
     _lensImage = lensImage;
-    [self.lensImageView removeFromSuperview];
-    self.lensImageView = [[UIImageView alloc] initWithImage:_lensImage];
-    [self addSubview:self.lensImageView];
+    self.lensImageView.image = self.lensImage;
 }
 
 -(void) setCancelButtonImage:(UIImage *)cancelButtonImage{
     _cancelButtonImage = cancelButtonImage;
-    if (!self.cancelButton) {
-        self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    }
-    [self.cancelButton removeFromSuperview];
     [self.cancelButton setBackgroundImage:_cancelButtonImage forState:UIControlStateNormal];
-    CGRect frame = self.cancelButton.frame;
-    frame.size = _cancelButtonImage.size;
-    self.cancelButton.frame = frame;
     [self.cancelButton addTarget:self action:@selector(cancelAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:self.cancelButton];
+    self.cancelButton.hidden = true;
 }
 
 
+-(void) showExtraCancel{
+    if (!self.addExtraCancelButton || !self.extraCancelButton.hidden) {
+        return;
+    }
+    
+    self.extraCancelButton.hidden = NO;
+    CGRect frame = self.searchFieldsContainerView.frame;
+    frame.size.width -= 80;
+    
+    CGRect frame2 = self.extraCancelButton.frame;
+    frame2.size.width = 60;
+    frame2.origin.x -= 60;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.searchFieldsContainerView.frame = frame;
+        self.extraCancelButton.frame = frame2;
+
+    } completion:^(BOOL finished) {
+        self.extraCancelWConstraint.constant = 60;
+        self.containerRightConstraint.constant = 10;
+        [self.superview layoutIfNeeded];
+    }];
+}
+
+-(void) hideExtraCancel{
+    if (!self.addExtraCancelButton) {
+        return;
+    }
+    
+    CGRect frame = self.searchFieldsContainerView.frame;
+    frame.size.width += 80;
+    
+    CGRect frame2 = self.extraCancelButton.frame;
+    frame2.size.width = 0;
+    frame2.origin.x += 60;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.searchFieldsContainerView.frame = frame;
+        self.extraCancelButton.frame = frame2;
+    } completion:^(BOOL finished) {
+        self.extraCancelWConstraint.constant = 0;
+        self.containerRightConstraint.constant = -10;
+        self.extraCancelButton.hidden = YES;
+        [self.superview layoutIfNeeded];
+    }];
+}
+
+
+
+//UITextFieldDelegate
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     
-    CGRect frame = self.lensImageView.frame;
-    frame.origin.x = 3;
-    [UIView animateWithDuration:0.1 animations:^{
-        self.lensImageView.frame = frame;
-    }];
+    [self showExtraCancel];
 
     if (self.delegate && [self.delegate respondsToSelector:@selector(SBSearchBarShouldBeginEditing:)]) {
         [self.delegate SBSearchBarShouldBeginEditing:self];
@@ -106,16 +172,22 @@
     }
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if (newString.length > 0){
+        self.cancelButton.hidden = false;
+    }else{
+        self.cancelButton.hidden = true;
+    }
+    return YES;
+}
+
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     
     if (textField.text.length <= 0) {
-        CGRect frame = self.lensImageView.frame;
-        frame.origin.x = 3;//CGRectGetWidth(self.frame)/2 - CGRectGetWidth(frame)/2;
-
-        [UIView animateWithDuration:0.1 animations:^{
-            self.lensImageView.frame = frame;
-        }];
-
+        [self hideExtraCancel];
+        
     }
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(SBSearchBarShouldEndEditing:)]) {
@@ -124,6 +196,7 @@
     
     return YES;
 }
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
@@ -137,6 +210,7 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(SBSearchBarTextDidEndEditing:)]) {
         [self.delegate SBSearchBarTextDidEndEditing:self];
     }
@@ -161,7 +235,7 @@
 //}
 
 -(void) setTextColor:(UIColor *)color{
-    textColor = color;
+    _textColor = color;
     if (self.searchTextField.superview) {
       [self.searchTextField setTextColor:color];
     }
@@ -169,11 +243,19 @@
 
 - (void) setPlaceHolderColor:(UIColor *)color{
     _placeHolderColor = color;
-    self.searchTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.searchTextField.placeholder attributes:@{NSForegroundColorAttributeName: color}];
+    
+    if (self.searchTextField) {
+    self.searchTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.placeHolderStr attributes:@{NSForegroundColorAttributeName: color}];
+    }
+
 }
 
 - (void) cancelAction:(id) sender{
     self.searchTextField.text = @"";
+    self.cancelButton.hidden = YES;
+    if (!self.searchTextField.isFirstResponder) {
+        [self hideExtraCancel];
+    }
     [self resignFirstResponder];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(SBSearchBarCancelButtonClicked:)]) {

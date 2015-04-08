@@ -18,6 +18,8 @@
 		1ADE35AF19105B45006B4B40 /* ic_lens@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADE35AE19105B45006B4B40 /* ic_lens@2x.png */; };
 		1AF1EDCF19113664004D3C28 /* SBExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF1EDCD19113664004D3C28 /* SBExampleViewController.m */; };
 		1AF1EDD019113664004D3C28 /* SBExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1EDCE19113664004D3C28 /* SBExampleViewController.xib */; };
+		5280C0951AD56B3500BE8EED /* FormReset@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5280C0941AD56B3500BE8EED /* FormReset@2x.png */; };
+		5280C0971AD5B31C00BE8EED /* SBSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5280C0961AD5B31C00BE8EED /* SBSearchBar.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		1AF1EDCC19113664004D3C28 /* SBExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBExampleViewController.h; sourceTree = "<group>"; };
 		1AF1EDCD19113664004D3C28 /* SBExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBExampleViewController.m; sourceTree = "<group>"; };
 		1AF1EDCE19113664004D3C28 /* SBExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBExampleViewController.xib; sourceTree = "<group>"; };
+		5280C0941AD56B3500BE8EED /* FormReset@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FormReset@2x.png"; path = "../../Rokk3r Labs/HotSwitch_Assets/Content/FormReset@2x.png"; sourceTree = "<group>"; };
+		5280C0961AD5B31C00BE8EED /* SBSearchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBSearchBar.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				1ADE35AE19105B45006B4B40 /* ic_lens@2x.png */,
+				5280C0941AD56B3500BE8EED /* FormReset@2x.png */,
 				1ADE35821910441C006B4B40 /* SBAppDelegate.h */,
 				1ADE35831910441C006B4B40 /* SBAppDelegate.m */,
 				1ADE35851910441C006B4B40 /* Images.xcassets */,
@@ -115,6 +120,7 @@
 			children = (
 				1ADE35A319104AA8006B4B40 /* SBSearchBar.h */,
 				1ADE35A419104AA8006B4B40 /* SBSearchBar.m */,
+				5280C0961AD5B31C00BE8EED /* SBSearchBar.xib */,
 			);
 			path = SBSearchBar;
 			sourceTree = "<group>";
@@ -172,6 +178,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AF1EDD019113664004D3C28 /* SBExampleViewController.xib in Resources */,
+				5280C0951AD56B3500BE8EED /* FormReset@2x.png in Resources */,
+				5280C0971AD5B31C00BE8EED /* SBSearchBar.xib in Resources */,
 				1ADE35AF19105B45006B4B40 /* ic_lens@2x.png in Resources */,
 				1ADE357E1910441C006B4B40 /* InfoPlist.strings in Resources */,
 				1ADE35861910441C006B4B40 /* Images.xcassets in Resources */,
