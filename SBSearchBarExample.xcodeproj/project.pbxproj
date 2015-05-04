@@ -19,7 +19,6 @@
 		1AF1EDD019113664004D3C28 /* SBExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AF1EDCE19113664004D3C28 /* SBExampleViewController.xib */; };
 		52312B2D1AD5D0A9008B93C4 /* SBSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52312B291AD5D0A9008B93C4 /* SBSearchBar.xib */; };
 		52312B2E1AD5D0A9008B93C4 /* SBSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 52312B2C1AD5D0A9008B93C4 /* SBSearchBar.m */; };
-		5280C0951AD56B3500BE8EED /* FormReset@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5280C0941AD56B3500BE8EED /* FormReset@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +41,6 @@
 		52312B291AD5D0A9008B93C4 /* SBSearchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SBSearchBar.xib; sourceTree = "<group>"; };
 		52312B2B1AD5D0A9008B93C4 /* SBSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBSearchBar.h; sourceTree = "<group>"; };
 		52312B2C1AD5D0A9008B93C4 /* SBSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBSearchBar.m; sourceTree = "<group>"; };
-		5280C0941AD56B3500BE8EED /* FormReset@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FormReset@2x.png"; path = "../../Rokk3r Labs/HotSwitch_Assets/Content/FormReset@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				1ADE35AE19105B45006B4B40 /* ic_lens@2x.png */,
-				5280C0941AD56B3500BE8EED /* FormReset@2x.png */,
 				1ADE35821910441C006B4B40 /* SBAppDelegate.h */,
 				1ADE35831910441C006B4B40 /* SBAppDelegate.m */,
 				1ADE35851910441C006B4B40 /* Images.xcassets */,
@@ -194,7 +191,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AF1EDD019113664004D3C28 /* SBExampleViewController.xib in Resources */,
-				5280C0951AD56B3500BE8EED /* FormReset@2x.png in Resources */,
 				52312B2D1AD5D0A9008B93C4 /* SBSearchBar.xib in Resources */,
 				1ADE35AF19105B45006B4B40 /* ic_lens@2x.png in Resources */,
 				1ADE357E1910441C006B4B40 /* InfoPlist.strings in Resources */,

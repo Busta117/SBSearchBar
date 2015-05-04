@@ -78,17 +78,19 @@
                               @"viewY":[NSNumber numberWithDouble:CGRectGetMinY(self.orginalFrame)],
                               @"viewH":[NSNumber numberWithDouble:CGRectGetHeight(self.orginalFrame)]
                               };
-    
-    [self.superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-viewX-[view]-viewX-|" options:NSLayoutFormatAlignAllBaseline metrics:metrics views:views]];
-    
-    
-    [self.superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-viewY-[view(viewH)]" options:NSLayoutFormatAlignAllBaseline metrics:metrics views:views]];
-    
+    if (self.superview){
+        [self.superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-viewX-[view]-viewX-|" options:NSLayoutFormatAlignAllBaseline metrics:metrics views:views]];
+        
+        
+        [self.superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-viewY-[view(viewH)]" options:NSLayoutFormatAlignAllBaseline metrics:metrics views:views]];
+    }
     
     self.extraCancelWConstraint.constant = 0;
     self.containerRightConstraint.constant = -10;
     
-    [self.superview layoutIfNeeded];
+    if (self.superview){
+        [self.superview layoutIfNeeded];
+    }
     
     
     
@@ -182,6 +184,11 @@
     }else{
         self.cancelButton.hidden = true;
     }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(SBSearchBarTextDidChange:text:)]){
+        [self.delegate SBSearchBarTextDidChange:self text:newString];
+    }
+    
     return YES;
 }
 

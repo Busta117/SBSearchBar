@@ -21,6 +21,8 @@
 - (BOOL)SBSearchBarShouldEndEditing:(SBSearchBar *)searchBar;                        // return NO to not resign first responder
 - (void)SBSearchBarTextDidEndEditing:(SBSearchBar *)searchBar;                       // called when text ends editing
 
+- (void)SBSearchBarTextDidChange:(SBSearchBar *)searchBar text:(NSString *)searchText;                       // called when text did change
+
 @end
 
 @interface SBSearchBar : UIView <UITextFieldDelegate>
