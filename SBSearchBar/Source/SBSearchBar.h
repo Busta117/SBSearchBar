@@ -41,6 +41,8 @@
 @property (nonatomic, assign) BOOL addExtraCancelButton;
 @property (nonatomic, weak) IBOutlet UIButton *extraCancelButton;
 
+@property (nonatomic, strong) NSString *placeHolderStr;
+
 -(void) setTextColor:(UIColor *)color;
 
 @end
