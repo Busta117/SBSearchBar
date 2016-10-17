@@ -44,7 +44,7 @@
     searchBarCustom.extraCancelButton.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
     searchBarCustom.extraCancelButton.layer.borderWidth = 1;
     searchBarCustom.extraCancelButton.layer.borderColor = [UIColor blackColor].CGColor;
-   
+    searchBarCustom.placeHolderStr = @"customSearchBar";
     [self.view addSubview:searchBarCustom];
     
 

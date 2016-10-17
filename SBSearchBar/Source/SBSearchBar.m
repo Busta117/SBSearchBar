@@ -15,7 +15,7 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *textfieldRightConstraint;
 
 @property (nonatomic, assign) CGRect orginalFrame;
-@property (nonatomic, strong) NSString *placeHolderStr;
+
 @end
 
 @implementation SBSearchBar
